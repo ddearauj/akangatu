@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+<!-- site-main -->
+<div id="main" class="site-main">
+	<!-- InstanceBeginEditable name="TopContent" -->
+	
+	<!-- InstanceEndEditable -->
+    <div class="layout-medium"> 
+        <div id="primary" class="content-area">
+    
+            <!-- site-content -->
+            <div id="content" class="site-content" role="main">
+                <!-- entry-header -->
+                <!--<header class="entry-header">
+                	<h1 class="entry-title">Latest Stories</h1>
+                </header>-->
+                <!-- entry-header -->
+
+                <!-- BLOG LIST -->
+                <div class="blog-list  blog-stream">
+
+               <!-- BLOG LIST -->
+    {% for post in posts_list %}
+                 <!-- .hentry -->
+                    <article class="hentry post has-post-thumbnail">
+                        
+                        <!-- .featured-image -->
+                        <div class="featured-image">
+                            <a href="{{ post.get_abs_url }}"><img src="{{ post.leadImage.url }}" alt="blog-image"></a>
+                        </div>
+                        <!-- .featured-image -->
+                        
+                        <!-- .hentry-middle -->
+                        <div class="hentry-middle">
+                        
+                            <!-- .entry-header -->
+                            <header class="entry-header">
+                                
+                                <!-- .entry-meta -->
+                                <div class="entry-meta">
+                                    <span class="cat-links">
+                                        <a href="#" title="View all posts in {{ post.category }}" rel="category tag">{{ post.category }}</a>
+                                    </span> 
+                                    <span class="entry-date">
+                                        <time class="entry-date" datetime="{{ post.timeStamp }}">{{ post.timeStamp }}</time>
+                                    </span>   
+                                </div>
+                                <!-- .entry-meta -->
+                                
+                                <!-- .entry-title -->
+                                <h2 class="entry-title"><a href='{{ post.get_abs_url }}'>{{ post.title }}</a></h2>
+                                
+                            </header>
+                            <!-- .entry-header -->
+                            
+                            <!-- .entry-content -->
+                            <div class="entry-content">
+                            <!-- FALTA TRUNCAR O TEXTO PARA NAO FICAR O ARTIGO TODO NA LISTA!!! -->
+                                                                
+                                {{ post.content|safe|striptags|truncatewords_html:50}}
+                                    <span class="more">
+                                        <a href="{{ post.get_abs_url }}" class="more-link">Read More</a>
+                                    </span>
+                                
+                               
+                            </div>
+                            <!-- .entry-content -->
+                        
+                        </div>
+                        <!-- .hentry-middle -->
+                        
+                        
+                    </article>
+                    <!-- .hentry -->
+    {% endfor %}
+       
+               </div>
+                <!-- post pagination -->
+
+                <nav class="post-pagination">
+                    <ul class="pagination">
+                    {% if posts_list.has_previous %}
+                      <li class="pagination-prev"> 
+                        <a href="?{{ page_request_var }}={{ posts_list.previous_page_number }}&q={{ request.GET.q }}">previous</a></li>
+                    {% endif %}
+                      <li class="pagination-num current">Page {{ posts_list.number }} of </li>
+                      <li class="pagination-num ">{{ posts_list.paginator.num_pages }} </a></li>
+                    {% if posts_list.has_next %}
+                        <li class="pagination-next">
+                            <a href="?{{ page_request_var }}={{ posts_list.next_page_number }} &q={{ request.GET.q }}">next</a>
+                        </li>
+                    {% endif %}
+                    </ul>
+                </nav>
+                <!-- post pagination -->
+                
+            </div>
+            <!-- site-content -->
+    
+        </div>
+        <!-- primary -->    
+    
+    </div>
+    <!-- layout -->
+</div>
+<!-- site-main -->
+{% endblock content %}

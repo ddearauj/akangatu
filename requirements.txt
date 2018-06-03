@@ -1,0 +1,16 @@
+dj-database-url==0.4.1
+Django==1.10.0
+gunicorn==19.6.0
+psycopg2==2.6.2
+whitenoise==2.0.6
+
+
+django-ckeditor==5.1.1
+django-ckeditor-filebrowser-filer==0.2.0
+django-filer==1.2.5
+django-mptt==0.8.6
+django-pagedown==0.1.1
+django-polymorphic==0.8.1
+django-tinymce==2.4.0
+docutils==0.12
+easy-thumbnails==2.3

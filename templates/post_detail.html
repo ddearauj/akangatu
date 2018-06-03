@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+<!-- site-main -->
+<div id="main" class="site-main">
+	<!-- InstanceBeginEditable name="TopContent" -->
+    <!-- .featured-top -->
+    <div class="featured-top">
+        <img src="{{ instance.leadImage.url }}" alt="post-image">
+        <!-- .post-thumbnail -->
+        <div class="post-thumbnail" style="background-image:url({{ instance.leadImage.url }})">
+            <!-- .entry-header -->
+            <header class="entry-header">          
+                <!-- .entry-meta -->
+                <div class="entry-meta">
+                    <span class="cat-links">
+                        <a href="#" title="View all posts in Travel" rel="category tag">{{ instance.category }}</a>
+                    </span>	
+                </div>
+                <!-- .entry-meta -->
+                
+                <!-- .entry-title -->
+                <h1 class="entry-title">{{ instance.title }}</h1>
+                                
+                <!-- .entry-meta -->
+                <div class="entry-meta">
+                    <span class="entry-date">
+                        <time class="entry-date" datetime="{{ post.timeStamp }}">{{ post.timeStamp }}</time>
+                    </span>
+                </div>
+                <!-- .entry-meta -->
+                
+            </header>
+            <!-- .entry-header -->
+            
+        </div>
+    	<!-- .post-thumbnail -->
+        
+    </div>
+    <!-- .featured-top -->	
+	<!-- InstanceEndEditable -->
+     
+    <div class="layout-medium"> 
+        <div id="primary" class="content-area">   
+            <!-- site-content -->
+            <div id="content" class="site-content" role="main">              
+                <!-- InstanceBeginEditable name="PageContent" -->
+              <!-- .hentry -->
+                    <article class="hentry post single-post">
+                        <!-- .entry-content -->
+                        {{ instance.content|safe }}
+                        <!-- .entry-content -->
+                             <!-- .post-tags -->
+                             <div class="post-tags tagcloud">
+                                {% for tag in tags %}
+                                    <a href="/blog/tag/{{ tag }}/" rel="tag">{{ tag }}</a>
+                                {% endfor %}
+                             </div>
+                             <!-- .post-tags -->
+                             <!-- .share-links -->
+                             <div class="share-links">
+                                
+                                <h3>SHARE THIS POST</h3>
+                                                                
+                                <a rel="nofollow" target="_blank" href="mailto:?subject=I wanted you to see this post&amp;body=Check out this post : {{ instance.title}} - {{ instance.get_abs_url }}." title="Email this post to a friend"><i class="pw-icon-mail"></i></a>
+                                
+                                <a rel="nofollow" target="_blank" href="http://twitter.com/home?status=Currently%20reading:%20 {{ instance.title }} %20{{ instance.get_abs_url }}" title="Share this post with your followers"><i class="pw-icon-twitter"></i></a>
+                                  
+                                <a rel="nofollow" target="_blank" href="http://www.facebook.com/sharer.php?u={{ instance.get_abs_url }}&amp;t={{ instance.title }}" title="Share this post on Facebook"><i class="pw-icon-facebook"></i></a>
+                                
+                                
+                             </div>
+                             <!-- .share-links -->
+                             <!-- .nav-single -->
+                            <!-- .nav-single -->                                
+                            <!-- .about-author -->
+                            <!-- No need for this part, at least for now... I can maybe put a fixed static thing about me -->
+
+                            <!-- .about-author -->
+                    </article>
+                    <!-- .hentry -->
+                    <!-- #comments -->
+                    <div id="comments" class="comments-area">
+                                              <!-- Comments -->
+                        <div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-numposts="5"></div>
+                      
+                    </div>
+                    <!-- #comments -->
+        		<!-- InstanceEndEditable -->                
+            </div>
+            <!-- site-content -->
+        </div>
+        <!-- primary -->    
+    </div>
+    <!-- layout -->
+</div>
+<!-- site-main -->
+{% endblock content %}

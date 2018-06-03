@@ -1,0 +1,65 @@
+{% load staticfiles %}
+{% block header %}
+        <header id="masthead" class="site-header" role="banner">      
+            <!-- site-navigation -->
+            <nav id="primary-navigation" class="site-navigation primary-navigation" role="navigation">               
+                <!-- layout-medium -->
+                <div class="layout-medium">
+         
+                    <!-- site-title : image-logo -->
+                    <h1 class="site-title">
+                        <a href="index-2.html" rel="home">
+                        	<span class="screen-reader-text">Daniel Pereira</span>
+                        </a>
+                    </h1>
+
+                    <a class="menu-toggle"><span class="lines"></span></a>
+                    
+                    <!-- nav-menu -->
+                    {% block nav %}
+                    	{% include "nav.html" %}
+                    {% endblock nav %}
+                    <!-- nav-menu -->
+                    
+                    <a class="search-toggle toggle-link"></a>
+                                        
+                    <!-- search-container -->
+                    <div class="search-container">
+
+                        
+                        <div class="search-box" role="search">
+                            <form method="GET" class="search-form" action="/blog/">
+                                <label>Search Here
+                                    <input type="search" id="search-field" placeholder="type and hit enter" name="q">
+                                </label>
+                                <input type="submit" class="search-submit" value="{{ request.GET.q }}">
+                            </form>
+                        </div>
+                    
+                    </div>
+                    <!-- search-container -->
+                    
+                    <!-- social-container -->
+                    <div class="social-container">
+                        
+                        <a class="social-link github" href="https://github.com/ddearauj"></a>
+                        <a class="social-link twitter" href="https://twitter.com/dpereira14"></a>
+                        <a class="social-link linkedin" href="https://linkedin.com/in/dpereira14"></a>
+    
+                    </div>
+                    <!-- social-container -->
+        
+                </div>
+                <!-- layout-medium -->
+                
+            </nav>
+            <!-- site-navigation -->
+            
+            
+            
+            
+            
+            		
+        </header>
+
+{% endblock header %}
